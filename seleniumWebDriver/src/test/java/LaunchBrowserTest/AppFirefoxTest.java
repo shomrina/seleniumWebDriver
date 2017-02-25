@@ -12,6 +12,11 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Marina on 25.02.2017.
+ * Launch Firefox new version with new scheme run Se (geckodriver, MARIONETTE = true by default)
+ * // новая схема более явно:
+ DesiredCapabilities caps = new DesiredCapabilities();
+ caps.setCapability(FirefoxDriver.MARIONETTE, true);
+ WebDriver driver = new FirefoxDriver(caps);
  */
 public class AppFirefoxTest {
 
