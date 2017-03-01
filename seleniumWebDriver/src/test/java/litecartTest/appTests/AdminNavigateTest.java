@@ -2,9 +2,12 @@ package litecartTest.appTests;
 
 import litecartTest.appTests.framework.LoginAdminPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -12,8 +15,9 @@ import org.testng.annotations.Test;
  * Created by Marina on 01.03.2017.
  */
 public class AdminNavigateTest extends  BaseTest {
+    private By headerLocator = By.cssSelector("#content>h1");
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void login() {
         LoginAdminPage loginAdminPage = new LoginAdminPage(driver);
         loginAdminPage.fillLoginAdmin();
@@ -21,26 +25,52 @@ public class AdminNavigateTest extends  BaseTest {
     }
 
 
-    @Test
-    public void AppearenceTest() {
-        driver.findElement(By.xpath("//*[text() = 'Appearence']")).click();
-        waitElementVisibility(By.cssSelector("#content>h1"));
-
-        String appearence = driver.findElement(By.cssSelector("#content>h1")).getText();  //.getAttribute("text");
-        Assert.assertEquals(appearence, "Template", "Заголовок не совпадает с ожидаемым значением \n");
-
-        driver.findElement(By.id("doc-template")).click();
-        appearence = driver.findElement(By.cssSelector("#content>h1")).getText();  //.getAttribute("text");
-        Assert.assertEquals(appearence, "Template", "Заголовок не совпадает с ожидаемым значением \n");
-
-        driver.findElement(By.id("doc-logotype")).click();
-        appearence = driver.findElement(By.cssSelector("#content>h1")).getText();  //.getAttribute("text");
-        Assert.assertEquals(appearence, "Logotype", "Заголовок не совпадает с ожидаемым значением \n");
-    }
 
     @Test
-    public void CatalogTest() {
+    public void LeftMenuClickTest() {
+        List<WebElement> leftMenuList = driver.findElement(By.id("box-apps-menu")).findElements(By.tagName("li"));
+                                                                                                                                //get names point of menu
+        System.out.println("leftMenuList size = " + leftMenuList.size());
+        List<String > leftMenuListName = new ArrayList<>();
+        for (int l = 0; l < leftMenuList.size(); l++) {
+            String name = leftMenuList.get(l).getText();
+            leftMenuListName.add(name);
+        }
 
+        for (int i = 0; i < leftMenuList.size(); i++) {
+            System.out.println("By.xpath = " + "//*[text() = '" + leftMenuListName.get(i) + "']");
+            driver.findElement(By.xpath("//*[text() = '" + leftMenuListName.get(i) + "']")).click();                            //click on point Menu
+            waitElementVisibility(headerLocator);
+            areElementsPresent(driver, headerLocator);
+
+            System.out.println("<Получение вложенных пунктов меню>");
+
+                if (areElementsPresent(driver, By.className("docs"))) {                                                       //check element 'docs' is exist
+                    List<WebElement> addList = driver.findElement(By.className("docs")).findElements(By.tagName("li"));      //get all added point Menu (secondary)
+                    //если найден элемент вложенного меню:
+                    if (addList.size() > 0) {
+                        List<String> addListName = new ArrayList<>();                                                          //for all name of secondary points
+                        List<String> addListId = new ArrayList<>();                                                            //for all id of secondary points
+                        System.out.println("<Получение текста и ид вложенных пунктов меню>");
+                        for (int m = 0; m < addList.size(); m++) {
+                            String name = addList.get(m).getText();                                                             //get all name of secondary points
+                            String idName = addList.get(m).getAttribute("id");                                            //get all id of secondary points
+                            addListName.add(name);
+                            addListId.add(idName);
+                        }
+
+                        System.out.println("<Прокликивание вложенных пунктов меню>");
+                        for (int k = 0; k < addListId.size(); k++) {
+                            driver.findElement(By.id(addListId.get(k))).click();                                                    //click by each secondary point
+
+                            waitElementVisibility(headerLocator);
+                            Assert.assertTrue(areElementsPresent(driver, headerLocator));
+
+                        }
+                    } else System.out.println("<Вложенных элементов меню у " + leftMenuListName.get(i) + " нет>");
+            }else System.out.println("<Вложенных элементов меню у " + leftMenuListName.get(i) + " нет>");
+
+        }
     }
 
 
