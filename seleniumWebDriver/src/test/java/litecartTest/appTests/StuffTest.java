@@ -27,7 +27,7 @@ public class StuffTest extends BaseTest {
 
 
     @Test(enabled = false)
-    public void AppearenceTest() {
+    public void appearenceTest() {
         driver.findElement(By.xpath("//*[text() = 'Appearence']")).click();
         waitElementVisibility(headerLocator);
         String appearence = driver.findElement(headerLocator).getText();  //.getAttribute("text");
@@ -45,7 +45,7 @@ public class StuffTest extends BaseTest {
     }
 
     @Test(enabled = false)
-    public void CatalogTest() {
+    public void catalogTest() {
         driver.findElement(By.xpath("//*[text() = 'Catalog']")).click();
         waitElementVisibility(headerLocator);
         String appearence = driver.findElement(headerLocator).getText();
