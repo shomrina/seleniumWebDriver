@@ -23,8 +23,8 @@ public class BaseTest {
     @BeforeClass(alwaysRun = true)
     public void start() {
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, 5);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 10);
     }
 
     @AfterClass(alwaysRun = true)

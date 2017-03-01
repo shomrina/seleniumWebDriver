@@ -27,7 +27,7 @@ public class AdminNavigateTest extends  BaseTest {
 
 
     @Test
-    public void LeftMenuClickTest() {
+    public void leftMenuClickTest() {
         List<WebElement> leftMenuList = driver.findElement(By.id("box-apps-menu")).findElements(By.tagName("li"));
                                                                                                                                 //get names point of menu
         System.out.println("leftMenuList size = " + leftMenuList.size());
@@ -49,13 +49,10 @@ public class AdminNavigateTest extends  BaseTest {
                     List<WebElement> addList = driver.findElement(By.className("docs")).findElements(By.tagName("li"));      //get all added point Menu (secondary)
                     //если найден элемент вложенного меню:
                     if (addList.size() > 0) {
-                        List<String> addListName = new ArrayList<>();                                                          //for all name of secondary points
                         List<String> addListId = new ArrayList<>();                                                            //for all id of secondary points
-                        System.out.println("<Получение текста и ид вложенных пунктов меню>");
+                        System.out.println("<Получение ид вложенных пунктов меню>");
                         for (int m = 0; m < addList.size(); m++) {
-                            String name = addList.get(m).getText();                                                             //get all name of secondary points
                             String idName = addList.get(m).getAttribute("id");                                            //get all id of secondary points
-                            addListName.add(name);
                             addListId.add(idName);
                         }
 
