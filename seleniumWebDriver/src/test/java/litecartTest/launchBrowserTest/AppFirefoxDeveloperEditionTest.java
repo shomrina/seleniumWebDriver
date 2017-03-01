@@ -1,8 +1,5 @@
-package LaunchBrowserTest;
+package litecartTest.launchBrowserTest;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.HasCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +8,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +23,8 @@ public class AppFirefoxDeveloperEditionTest {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @Before                                                                                                   // = BeforeMethod
+    @BeforeMethod
+    // = BeforeMethod
     public void start() {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(FirefoxDriver.MARIONETTE, true);                                             //launch browser by new scheme
@@ -43,7 +44,7 @@ public class AppFirefoxDeveloperEditionTest {
         driver.findElement(By.name("login")).click();
     }
 
-    @After
+    @AfterMethod
     public void stop() {
         driver.quit();
         driver = null;

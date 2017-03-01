@@ -1,12 +1,13 @@
-package LaunchBrowserTest;
+package litecartTest.launchBrowserTest;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +18,7 @@ public class AppEdgeTest {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @Before                 // = BeforeMethod
+    @BeforeMethod                 // = BeforeMethod
     public void start() {
         driver = new EdgeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -32,7 +33,7 @@ public class AppEdgeTest {
         driver.findElement(By.name("login")).click();
     }
 
-    @After
+    @AfterMethod
     public void stop() {
         driver.quit();
         driver = null;
