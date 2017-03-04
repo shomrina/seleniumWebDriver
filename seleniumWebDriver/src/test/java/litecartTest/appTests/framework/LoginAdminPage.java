@@ -25,7 +25,7 @@ public class LoginAdminPage extends AbstractPage {
 
     public void clickLoginButtonAdmin() {
         driver.findElement(loginButton).click();
-        waitElementVisibility(By.xpath("/*//*[text() = 'Appearence']"));
+        waitElementVisibility(By.xpath("//*[text() = 'Appearence']"));
     }
 
     public void fillLoginAdmin(String username, String password) {
