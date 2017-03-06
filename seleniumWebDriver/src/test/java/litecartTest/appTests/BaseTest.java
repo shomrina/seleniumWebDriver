@@ -40,7 +40,7 @@ public class BaseTest {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(element));
     }
 
-    boolean isElementPresent(WebDriver driver, By locator) {
+    public boolean isElementPresent(WebDriver driver, By locator) {
         try {
             driver.findElement(locator);
             return true;
@@ -49,7 +49,7 @@ public class BaseTest {
         }
     }
 
-    boolean areElementsPresent(WebDriver driver, By locator) {
+    public  boolean areElementsPresent(WebDriver driver, By locator) {
         return driver.findElements(locator).size() > 0;
     }
 

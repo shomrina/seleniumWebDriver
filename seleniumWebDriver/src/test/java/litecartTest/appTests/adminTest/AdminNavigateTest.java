@@ -1,5 +1,6 @@
-package litecartTest.appTests;
+package litecartTest.appTests.adminTest;
 
+import litecartTest.appTests.BaseTest;
 import litecartTest.appTests.framework.LoginAdminPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Created by Marina on 01.03.2017.
  */
-public class AdminNavigateTest extends  BaseTest {
+public class AdminNavigateTest extends BaseTest {
     private By headerLocator = By.cssSelector("#content>h1");
 
     @BeforeClass(alwaysRun = true)

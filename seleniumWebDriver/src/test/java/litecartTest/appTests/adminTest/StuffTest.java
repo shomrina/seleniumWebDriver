@@ -1,5 +1,6 @@
-package litecartTest.appTests;
+package litecartTest.appTests.adminTest;
 
+import litecartTest.appTests.BaseTest;
 import litecartTest.appTests.framework.LoginAdminPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
