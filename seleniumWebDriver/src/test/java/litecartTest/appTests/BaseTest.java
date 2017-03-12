@@ -53,4 +53,12 @@ public class BaseTest {
         return driver.findElements(locator).size() > 0;
     }
 
+    public void waitInSeconds(int i) {
+        try {
+            TimeUnit.SECONDS.sleep(i);
+        } catch (InterruptedException ex) {
+            ex.getMessage();
+        }
+    }
+
 }
