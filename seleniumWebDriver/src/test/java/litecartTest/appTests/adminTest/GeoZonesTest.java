@@ -24,7 +24,7 @@ public class GeoZonesTest extends BaseTest {
         loginAdminPage.fillLoginAdmin();
         loginAdminPage.clickLoginButtonAdmin();
         driver.findElement(By.xpath("//*[text() = 'Geo Zones']")).click();
-        waitElementVisibility(By.xpath(".//*[@class='dataTable']"));
+        waitAllElementVisibility(By.xpath(".//*[@class='dataTable']"), 20);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class GeoZonesTest extends BaseTest {
                 System.out.println("countriesNameWithZone.get(k) = : " + countriesNameWithZone.get(k));*/
                 if (countryNamesLinks.get(l).getAttribute("textContent").equals(countriesNameWithZone.get(k))) {                             //если атрибут текст у ссылки совпадает с названием страны в k-ом элементе массива, то..
                     countryNamesLinks.get(l).click();       //нажимаем на ссылку и переходи внутрь
-                    waitElementVisibility(By.xpath(".//*[@id='table-zones']"));
+                    waitAllElementVisibility(By.xpath(".//*[@id='table-zones']"), 20);
                     List<WebElement> zonesNameList = driver.findElements(By.xpath(".//*[@id='table-zones']//td[3]"));                           //получить все зоны как веб элементы
                     for (int j = 0; j < zonesNameList.size() - 1; j++) {
                         List<WebElement> optionsList = zonesNameList.get(j).findElements(By.xpath(".//select/option"));                         //получить названия всех опций у данного выпадающего списка (веб элемента)
@@ -79,7 +79,7 @@ public class GeoZonesTest extends BaseTest {
                     WebElement element2 = driver.findElement(By.xpath("//*[text() = 'Geo Zones']"));
                     ((Locatable) element2).getCoordinates().inViewPort();
                     driver.findElement(By.xpath("//*[text() = 'Geo Zones']")).click();
-                    waitElementVisibility(By.xpath(".//*[@class='dataTable']"));
+                    waitAllElementVisibility(By.xpath(".//*[@class='dataTable']"), 20);
                     break;
 
                 }

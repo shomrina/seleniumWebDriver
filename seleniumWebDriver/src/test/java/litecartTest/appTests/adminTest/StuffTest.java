@@ -30,17 +30,17 @@ public class StuffTest extends BaseTest {
     @Test(enabled = false)
     public void appearenceTest() {
         driver.findElement(By.xpath("//*[text() = 'Appearence']")).click();
-        waitElementVisibility(headerLocator);
+        waitAllElementVisibility(headerLocator, 20);
         String appearence = driver.findElement(headerLocator).getText();  //.getAttribute("text");
         Assert.assertEquals(appearence, "Template", "Заголовок не совпадает с ожидаемым значением \n");
 
         driver.findElement(By.id("doc-template")).click();
-        waitElementVisibility(By.cssSelector("#content>h1"));
+        waitAllElementVisibility(By.cssSelector("#content>h1"), 20);
         appearence = driver.findElement(headerLocator).getText();  //.getAttribute("text");
         Assert.assertEquals(appearence, "Template", "Заголовок не совпадает с ожидаемым значением \n");
 
         driver.findElement(By.id("doc-logotype")).click();
-        waitElementVisibility(headerLocator);
+        waitAllElementVisibility(headerLocator, 20);
         appearence = driver.findElement(headerLocator).getText();  //.getAttribute("text");
         Assert.assertEquals(appearence, "Logotype", "Заголовок не совпадает с ожидаемым значением \n");
     }
@@ -48,7 +48,7 @@ public class StuffTest extends BaseTest {
     @Test(enabled = false)
     public void catalogTest() {
         driver.findElement(By.xpath("//*[text() = 'Catalog']")).click();
-        waitElementVisibility(headerLocator);
+        waitAllElementVisibility(headerLocator, 20);
         String appearence = driver.findElement(headerLocator).getText();
         Assert.assertEquals(appearence, "Catalog", "Заголовок не совпадает с ожидаемым значением \n");
 
@@ -66,7 +66,7 @@ public class StuffTest extends BaseTest {
 
         for (int k = 0; k < catalogListId.size(); k++) {
             driver.findElement(By.id(catalogListId.get(k))).click();
-            waitElementVisibility(headerLocator);
+            waitAllElementVisibility(headerLocator, 20);
             appearence = driver.findElement(headerLocator).getText();
             Assert.assertEquals(appearence, catalogListName.get(k), "Заголовок не совпадает с ожидаемым значением \n");
         }

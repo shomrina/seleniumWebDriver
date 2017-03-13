@@ -26,7 +26,7 @@ public class CountriesTest extends BaseTest {
         loginAdminPage.fillLoginAdmin();
         loginAdminPage.clickLoginButtonAdmin();
         driver.findElement(By.xpath("//*[text() = 'Countries']")).click();
-        waitElementVisibility(By.xpath(".//*[@class='dataTable']"));
+        waitAllElementVisibility(By.xpath(".//*[@class='dataTable']"), 20);
     }
 
     @Test
@@ -68,10 +68,10 @@ public class CountriesTest extends BaseTest {
 //                System.out.println("countriesNameWithZone.get(k) = : " + countriesNameWithZone.get(k));
                 if (countryNames.get(l).getAttribute("textContent").equals(countriesNameWithZone.get(k))) {
                     countryNames.get(l).click();
-                    waitElementVisibility(By.xpath(".//*[@id='content']//h2"));
+                    waitAllElementVisibility(By.xpath(".//*[@id='content']//h2"), 20);
                     WebElement element = driver.findElement(By.xpath(".//*[@id='table-zones']"));
                     ((Locatable) element).getCoordinates().inViewPort();
-                    waitElementVisibility(By.xpath(".//*[@id='table-zones']"));
+                    waitAllElementVisibility(By.xpath(".//*[@id='table-zones']"), 20);
                     List<WebElement> zonesNameList = driver.findElements(By.xpath(".//*[@id='table-zones']//td[3]"));
 //                    System.out.println("zonesNameList size = " + zonesNameList.size());
                     for (int j = 0; j < zonesNameList.size() - 2; j++) {
@@ -85,7 +85,7 @@ public class CountriesTest extends BaseTest {
                     WebElement element2 = driver.findElement(By.xpath("//*[text() = 'Countries']"));
                     ((Locatable) element2).getCoordinates().inViewPort();
                     driver.findElement(By.xpath("//*[text() = 'Countries']")).click();
-                    waitElementVisibility(By.xpath(".//*[@class='dataTable']"));
+                    waitAllElementVisibility(By.xpath(".//*[@class='dataTable']"), 20);
                     break;
 
                 }

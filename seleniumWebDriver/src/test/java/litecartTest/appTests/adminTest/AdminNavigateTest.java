@@ -41,7 +41,7 @@ public class AdminNavigateTest extends BaseTest {
         for (int i = 0; i < leftMenuList.size(); i++) {
             System.out.println("By.xpath = " + "//*[text() = '" + leftMenuListName.get(i) + "']");
             driver.findElement(By.xpath("//*[text() = '" + leftMenuListName.get(i) + "']")).click();                            //click on point Menu
-            waitElementVisibility(headerLocator);
+            waitAllElementVisibility(headerLocator, 20);
             areElementsPresent(driver, headerLocator);
 
             System.out.println("<Получение вложенных пунктов меню>");
@@ -61,7 +61,7 @@ public class AdminNavigateTest extends BaseTest {
                         for (int k = 0; k < addListId.size(); k++) {
                             driver.findElement(By.id(addListId.get(k))).click();                                                    //click by each secondary point
 
-                            waitElementVisibility(headerLocator);
+                            waitAllElementVisibility(headerLocator, 20);
                             Assert.assertTrue(areElementsPresent(driver, headerLocator));
 
                         }

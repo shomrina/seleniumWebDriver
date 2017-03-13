@@ -2,6 +2,7 @@ package litecartTest.appTests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,8 +24,8 @@ public class BaseTest {
     @BeforeClass(alwaysRun = true)
     public void start() {
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, 10);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);   //неявное ожидание
+        wait = new WebDriverWait(driver, 10);               //для явного ожидания
     }
 
     @AfterClass(alwaysRun = true)
@@ -35,9 +36,19 @@ public class BaseTest {
 
 
 
-    public void waitElementVisibility(By element) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+    public void waitAllElementVisibility(By element, int timeOutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(element));
+    }
+
+    public void waitElementVisibility(WebElement element, int timeOutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitElementVisibilityLocated(By element, int timeOutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
     public boolean isElementPresent(WebDriver driver, By locator) {
@@ -48,6 +59,16 @@ public class BaseTest {
             return false;
         }
     }
+
+    public void waitElementPresence(By element, int timeOutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+    }
+
+//    public boolean isElementsPresent(WebDriver driver, By locator) {
+//            return driver.findElements(locator).size() > 0;
+//    }
+
 
     public  boolean areElementsPresent(WebDriver driver, By locator) {
         return driver.findElements(locator).size() > 0;

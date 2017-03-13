@@ -131,13 +131,13 @@ public class AddNewProductTest extends BaseTest {
         loginAdminPage.fillLoginAdmin();
         loginAdminPage.clickLoginButtonAdmin();
         driver.findElement(By.xpath("//*[text() = 'Catalog']")).click();
-        waitElementVisibility(By.xpath(".//*[@class='dataTable']"));
+        waitAllElementVisibility(By.xpath(".//*[@class='dataTable']"), 20);
     }
 
     @Test
     public void testAddNewProduct() {
         driver.findElement(addNewProductButton).click();
-        waitElementVisibility(name);
+        waitAllElementVisibility(name, 20);
 
         /** GENERAL */
         driver.findElement(statusEnabled).click();
@@ -163,7 +163,7 @@ public class AddNewProductTest extends BaseTest {
 
         /** INFORMATION */
         driver.findElement(informationLink).click();
-        waitElementVisibility(manufacturer);
+        waitAllElementVisibility(manufacturer, 20);
         setManufacturerSelect();
         manufacturerSelect.selectByVisibleText("ACME Corp.");
         setSupplierSelect();
@@ -175,7 +175,7 @@ public class AddNewProductTest extends BaseTest {
 
         /** PRICES */
         driver.findElement(pricesLink).click();
-        waitElementVisibility(purchasePrice);
+        waitAllElementVisibility(purchasePrice, 20);
         driver.findElement(purchasePrice).sendKeys("100");
         setPurchaseCurrencySelect();
         purchaseCurrencySelect.selectByVisibleText("Euros");
@@ -190,7 +190,7 @@ public class AddNewProductTest extends BaseTest {
 
         driver.findElement(saveButton).click();
         waitInSeconds(1);
-        waitElementVisibility(By.xpath(".//*[@class='dataTable']"));
+        waitAllElementVisibility(By.xpath(".//*[@class='dataTable']"), 20);
         assertExistCreatedProduct(productName);
 
     }

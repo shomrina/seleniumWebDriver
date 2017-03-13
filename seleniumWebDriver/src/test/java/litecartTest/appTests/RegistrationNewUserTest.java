@@ -69,7 +69,7 @@ public class RegistrationNewUserTest extends BaseTest {
     public void createNewAccountTest() {
         //init creation account
         driver.findElement(initCreatedNewCustomer).click();
-        waitElementVisibility(headerCreaterAccount);
+        waitAllElementVisibility(headerCreaterAccount, 20);
 
         //fill create form
         driver.findElement(taxId).sendKeys("test");
@@ -84,7 +84,7 @@ public class RegistrationNewUserTest extends BaseTest {
 
         setCountrySelect();
         countrySelect.selectByVisibleText("United States");
-     //   waitElementVisibility(zone);
+     //   waitAllElementVisibility(zone);
         setZoneSelect();
         setSelectedInSet(zoneSelect);
         emailFotTest = "mar" + Math.random()*1000 + "@ma.ru";
@@ -96,17 +96,17 @@ public class RegistrationNewUserTest extends BaseTest {
         driver.findElement(createAccountButton).click();
 
         //logout
-        waitElementVisibility(logout);
+        waitAllElementVisibility(logout, 20);
         driver.findElement(logout).click();
 
         //login
-        waitElementVisibility(emailAddress);
+        waitAllElementVisibility(emailAddress, 20);
         driver.findElement(emailAddress).sendKeys(emailFotTest);
         driver.findElement(password).sendKeys(passwordForTest);
         driver.findElement(loginButton).click();
 
         //logout
-        waitElementVisibility(logout);
+        waitAllElementVisibility(logout, 20);
         driver.findElement(logout).click();
 
     }
