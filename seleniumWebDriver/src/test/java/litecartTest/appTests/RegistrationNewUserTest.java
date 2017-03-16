@@ -111,12 +111,7 @@ public class RegistrationNewUserTest extends BaseTest {
 
     }
 
-    public String getRandomIntNumber(int low, int high) {
-        //генерация целого случайного числа в указанном промежутке between low (inclusive - включительно) and high (exclusive - исключая)
-        final Random random = new Random();
-        int r = random.nextInt(high - low) + low; // возвращает следующее случайное значение
-        return Integer.toString(r); // преобразование полученного числа в строку
-    }
+
 
     public void setSelectedInSet(Select set) {
         //метод выбирает произвольное значение из всего списка селекта

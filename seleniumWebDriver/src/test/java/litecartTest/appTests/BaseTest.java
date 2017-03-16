@@ -10,6 +10,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.util.NoSuchElementException;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -18,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     protected WebDriver driver;
-    private WebDriverWait wait;
+    protected WebDriverWait wait;
 
 
     @BeforeClass(alwaysRun = true)
@@ -80,6 +81,13 @@ public class BaseTest {
         } catch (InterruptedException ex) {
             ex.getMessage();
         }
+    }
+
+    public String getRandomIntNumber(int low, int high) {
+        //генерация целого случайного числа в указанном промежутке between low (inclusive - включительно) and high (exclusive - исключая)
+        final Random random = new Random();
+        int r = random.nextInt(high - low) + low; // возвращает следующее случайное значение
+        return Integer.toString(r); // преобразование полученного числа в строку
     }
 
 }
