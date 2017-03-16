@@ -57,7 +57,6 @@ public class LinkTest extends BaseTest {
             driver.close();                                                                                             //закрытие окна, на которое переключились
             driver.switchTo().window(mainWindow);                                                                       // переключение на основное окно
             }
-
         }
 
 
