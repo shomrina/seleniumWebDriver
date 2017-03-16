@@ -3,8 +3,8 @@ package litecartTest.appTests.adminTest;
 import litecartTest.appTests.BaseTest;
 import litecartTest.appTests.framework.LoginAdminPage;
 
-import org.apache.xpath.operations.Bool;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -43,24 +43,19 @@ public class LinkTest extends BaseTest {
         List<WebElement> linksList = driver.findElements(By.xpath(".//form[@method='post']/table//a[@target='_blank']"));   //получить все ссылочкные элементы на странице
         System.out.println("linksList = " + linksList.size());
         for (int i = 0; i < linksList.size(); i++) {
-            String currentHandle = driver.getWindowHandle();                                                                    //получение ид активного окна
-            System.out.println("currentHandle = " + currentHandle);
+            String mainWindow = driver.getWindowHandle();                                                                    //получение ид активного окна
+            System.out.println("currentHandle = " + mainWindow);
             Set<String> oldWindowHandles =  driver.getWindowHandles();                                                             //получение ид всех открытых окон
             System.out.println("windowHandles = " + oldWindowHandles.size());
 
             linksList.get(i).click();                                                                                       //нажать на ссылку
             System.out.println("Open link with index: " + i);
 
-
-           /* Set<String> newWindowHandles =  driver.getWindowHandles();                                                             //получение ид всех открытых окон
-            System.out.println("windowHandles = " + newWindowHandles.size());
-            for(String newWindow: newWindowHandles) {
-                if(!oldWindowHandles.contains(newWindow)) {
-
-                }*/
-            String newWindow = wait.until(thereIsWindowOtherThan(oldWindowHandles));
-
-
+            String newWindow = wait.until((WebDriver d) -> thereIsWindowOtherThan(oldWindowHandles));                   //ожидание нового окна (лямбда выражение. until на вход принимает предикат, а метод возращшает строку. поэтому нужно так)
+            driver.switchTo().window(newWindow);                                                                        //переключение на новое открытое окно
+   //         System.out.println("currentURL: " + driver.getCurrentUrl() + "\n");
+            driver.close();                                                                                             //закрытие окна, на которое переключились
+            driver.switchTo().window(mainWindow);                                                                       // переключение на основное окно
             }
 
         }
@@ -68,7 +63,10 @@ public class LinkTest extends BaseTest {
 
 
 
+
+
     public String thereIsWindowOtherThan(Set<String> oldWindowHandles) {
+        //метод, который находит новое окно
         Set<String> newWindowHandles =  driver.getWindowHandles();                                                             //получение ид всех открытых окон
         System.out.println("windowHandles = " + newWindowHandles.size());
         for(String newWindow: newWindowHandles) {
@@ -78,5 +76,6 @@ public class LinkTest extends BaseTest {
             }
         }
         return null;
+        //другой вариант решения, без передачи лммбда выражения: сделать класс, который реализует интерфейс Function, и передавать в метод until экземпляр этого класса. Это будет громоздко)
     }
 }
