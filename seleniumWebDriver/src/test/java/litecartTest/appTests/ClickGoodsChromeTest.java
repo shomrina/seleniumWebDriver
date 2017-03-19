@@ -63,8 +63,10 @@ public class ClickGoodsChromeTest {
         String regularPriceDecoration1 = regularPrice1.getCssValue("text-decoration");                                                  //получение стиля для перечеркнутости
         String salePriceDecoration1 = salePrice1.getCssValue("text-decoration");
         System.out.println("regularPriceDecoration1 = " + regularPriceDecoration1 + ", salePriceDecoration1 = " + salePriceDecoration1);
-        Assert.assertEquals(regularPriceDecoration1, "line-through");
-        Assert.assertEquals(salePriceDecoration1, "none");
+        Assert.assertTrue(regularPriceDecoration1.contains("line-through"));
+       // Assert.assertEquals(regularPriceDecoration1, "line-through");
+      //  Assert.assertEquals(salePriceDecoration1, "none");
+        Assert.assertTrue(salePriceDecoration1.contains("none"));
 
         //6. жирность
         String regularPriceStyle1 = regularPrice1.getCssValue("font-weight");                                                           //получения стиля для определения жирности
@@ -107,8 +109,10 @@ public class ClickGoodsChromeTest {
         String regularPriceDecoration2 = regularPrice2.getCssValue("text-decoration");                                                    //получение стиля для перечеркнутости
         String salePriceDecoration2 = salePrice2.getCssValue("text-decoration");
         System.out.println("regularPriceDecoration2 = " + regularPriceDecoration2 + ", salePriceDecoration2 = " + salePriceDecoration2);
-        Assert.assertEquals(regularPriceDecoration2, "line-through");
-        Assert.assertEquals(salePriceDecoration2, "none");
+        Assert.assertTrue(regularPriceDecoration2.contains("line-through"));
+       // Assert.assertEquals(regularPriceDecoration2, "line-through");
+        //Assert.assertEquals(salePriceDecoration2, "none");
+        Assert.assertTrue(salePriceDecoration2.contains("none"));
 
         //жирность
         String regularPriceStyle2 = regularPrice2.getCssValue("font-weight");                                                             //получения стиля для определения жирности

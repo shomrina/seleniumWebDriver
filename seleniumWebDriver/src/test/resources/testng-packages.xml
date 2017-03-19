@@ -3,7 +3,8 @@
 <suite name="Suite1" verbose="1" >
     <test name="Test1"   >
         <packages>
-            <package name="litecartTest.appTests" />
+            <package name="litecartTest.gridBrowsers" />
+            <!--<package name="litecartTest.appTests" />-->
         </packages>
         <!--<classes>-->
             <!---->
