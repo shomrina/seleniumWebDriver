@@ -42,6 +42,19 @@
       <artifactId>htmlelements-matchers</artifactId>
       <version>${htmlelements.version}</version>
     </dependency>
+    <dependency>
+      <groupId>net.lightbody.bmp</groupId>          <!--подключение прокси для перехвата трафика  -->
+      <artifactId>browsermob-core</artifactId>
+      <version>2.1.4</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.seleniumhq.selenium</groupId>    <!--????? надо чтото укзаать для отключения транзитивной зависимости для этого прокси  -->
+          <artifactId>selenium-java</artifactId>      <!--https://search.maven.org/#artifactdetails|net.lightbody.bmp|browsermob-proxy|2.1.4|pom  -->
+        </exclusion>
+      </exclusions>
+
+    </dependency>
   </dependencies>
 
   <build>
