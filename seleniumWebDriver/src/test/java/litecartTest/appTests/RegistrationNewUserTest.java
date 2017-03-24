@@ -74,39 +74,44 @@ public class RegistrationNewUserTest extends BaseTest {
         //fill create form
         driver.findElement(taxId).sendKeys("test");
         driver.findElement(company).sendKeys("test Company");
-        driver.findElement(firstName).sendKeys("Marina" + Math.random()*1000);
-        driver.findElement(lastName).sendKeys("Shomrina" + Math.random()*1000);
+        driver.findElement(firstName).sendKeys("Marina" + System.currentTimeMillis());
+        driver.findElement(lastName).sendKeys("Shomrina" + System.currentTimeMillis());
         driver.findElement(address1).sendKeys("test address 1");
         driver.findElement(address2).sendKeys("test address 2");
         driver.findElement(postcode).sendKeys(getRandomIntNumber(10000, 100000));
         driver.findElement(city).sendKeys("test City");
 
-
+                //fill selector Country
         setCountrySelect();
         countrySelect.selectByVisibleText("United States");
-     //   waitAllElementVisibility(zone);
-        setZoneSelect();
+                //fill selector Zone
+        waitElementVisibility(driver.findElement(zone), 10);
+        setZoneSelect();        //todo  в идеале проверку на визибл сделать
         setSelectedInSet(zoneSelect);
-        emailFotTest = "mar" + Math.random()*1000 + "@ma.ru";
+                //fill email
+        emailFotTest = "mar" + System.currentTimeMillis() + "@ma.ru";  //вместо Math.random()*1000  наверное  лучше System.currentTimeMillis()
         driver.findElement(email).sendKeys(emailFotTest);
+                //fill phone
         driver.findElement(phone).sendKeys(getRandomIntNumber(100, 10000000));
+                //fill password
         passwordForTest = "mar";
         driver.findElement(password2).sendKeys(passwordForTest);
-        driver.findElement(confirmPassword).sendKeys("mar");
+        driver.findElement(confirmPassword).sendKeys(passwordForTest);
+                //click Create Account
         driver.findElement(createAccountButton).click();
 
         //logout
-        waitAllElementVisibility(logout, 20);
+        waitElementPresence(logout, 20);
         driver.findElement(logout).click();
 
         //login
-        waitAllElementVisibility(emailAddress, 20);
+        waitElementPresence(emailAddress, 20);
         driver.findElement(emailAddress).sendKeys(emailFotTest);
         driver.findElement(password).sendKeys(passwordForTest);
         driver.findElement(loginButton).click();
 
         //logout
-        waitAllElementVisibility(logout, 20);
+        waitElementPresence(logout, 20);
         driver.findElement(logout).click();
 
     }
