@@ -1,6 +1,6 @@
 package litecartTest.appTests;
 
-import litecartTest.appTests.framework.ShopMainPage;
+import litecartTest.appTests.framework.ShopMainPage1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -34,7 +34,7 @@ public class CartTest extends BaseTest {
 
     @BeforeClass
     public void openMainPage() {
-        ShopMainPage shopMainPage = new ShopMainPage(driver);
+        ShopMainPage1 shopMainPage = new ShopMainPage1(driver);
         shopMainPage.openMainPage();
     }
 

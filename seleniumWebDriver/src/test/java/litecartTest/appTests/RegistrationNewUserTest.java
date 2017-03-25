@@ -1,12 +1,10 @@
 package litecartTest.appTests;
 
-import litecartTest.appTests.framework.ShopMainPage;
+import litecartTest.appTests.framework.ShopMainPage1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.util.Random;
 
 /**
  * Created by Marisha on 08.03.2017.
@@ -61,7 +59,7 @@ public class RegistrationNewUserTest extends BaseTest {
 
     @BeforeClass
     public void openMainPage() {
-        ShopMainPage shopMainPage = new ShopMainPage(driver);
+        ShopMainPage1 shopMainPage = new ShopMainPage1(driver);
         shopMainPage.openMainPage();
     }
 

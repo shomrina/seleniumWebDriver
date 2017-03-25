@@ -10,10 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /*
  * Created by Marina on 01.03.2017.
  */
-public abstract class AbstractPage {
+public abstract class AbstractPage1 {
     protected WebDriver driver;
 
-    public AbstractPage(WebDriver driver) {
+    public AbstractPage1(WebDriver driver) {
         this.driver = driver;
     }
 

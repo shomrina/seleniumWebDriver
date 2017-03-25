@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Marina on 01.03.2017.
  */
-public class LoginAdminPage extends AbstractPage {
+public class LoginAdminPage1 extends AbstractPage1 {
 
   //  protected WebDriver driver;
 
@@ -15,7 +15,7 @@ public class LoginAdminPage extends AbstractPage {
     private By password = By.name("password");
     private By loginButton = By.name("login");
 
-    public LoginAdminPage(WebDriver driver) {
+    public LoginAdminPage1(WebDriver driver) {
         super(driver);
     }
 

@@ -1,12 +1,11 @@
 package litecartTest.appTests.adminTest;
 
-import litecartTest.appTests.framework.LoginAdminPage;
+import litecartTest.appTests.framework.LoginAdminPage1;
 import litecartTest.appTests.framework.MyAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
@@ -46,7 +45,7 @@ public class LogsBrowserCatalogTest extends MyAssertions {
     @Test
     public void testBrowserLogCatalog() {
         //LOGIN in admin
-        LoginAdminPage loginAdminPage = new LoginAdminPage(driver);
+        LoginAdminPage1 loginAdminPage = new LoginAdminPage1(driver);
         loginAdminPage.fillLoginAdmin();
         loginAdminPage.clickLoginButtonAdmin();
         //go to page Catalog

@@ -1,7 +1,7 @@
 package litecartTest.appTests.adminTest;
 
 import litecartTest.appTests.BaseTest;
-import litecartTest.appTests.framework.LoginAdminPage;
+import litecartTest.appTests.framework.LoginAdminPage1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -22,7 +22,7 @@ public class CountriesTest extends BaseTest {
 
     @BeforeClass(alwaysRun = true)
     public void openCountiesPage() {
-        LoginAdminPage loginAdminPage = new LoginAdminPage(driver);
+        LoginAdminPage1 loginAdminPage = new LoginAdminPage1(driver);
         loginAdminPage.fillLoginAdmin();
         loginAdminPage.clickLoginButtonAdmin();
         driver.findElement(By.xpath("//*[text() = 'Countries']")).click();

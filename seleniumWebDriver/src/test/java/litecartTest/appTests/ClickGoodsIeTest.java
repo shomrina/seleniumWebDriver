@@ -1,6 +1,6 @@
 package litecartTest.appTests;
 
-import litecartTest.appTests.framework.ShopMainPage;
+import litecartTest.appTests.framework.ShopMainPage1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,7 +34,7 @@ public class ClickGoodsIeTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
 
-        ShopMainPage shopMainPage = new ShopMainPage(driver);
+        ShopMainPage1 shopMainPage = new ShopMainPage1(driver);
         shopMainPage.openMainPage();
     }
 

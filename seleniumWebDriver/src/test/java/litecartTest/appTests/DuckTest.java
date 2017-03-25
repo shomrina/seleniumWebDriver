@@ -1,6 +1,6 @@
 package litecartTest.appTests;
 
-import litecartTest.appTests.framework.ShopMainPage;
+import litecartTest.appTests.framework.ShopMainPage1;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -16,7 +16,7 @@ public class DuckTest extends BaseTest {
 
     @BeforeClass(alwaysRun = true)
     public void openMainPage() {
-        ShopMainPage shopMainPage = new ShopMainPage(driver);
+        ShopMainPage1 shopMainPage = new ShopMainPage1(driver);
         shopMainPage.openMainPage();
     }
 

@@ -6,13 +6,13 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Marina on 02.03.2017.
  */
-public class ShopMainPage extends AbstractPage {
+public class ShopMainPage1 extends AbstractPage1 {
     private String mainPageUrl = "http://localhost/litecart/en/";
     private By goodsLocator = By.xpath(".//*[@class='image-wrapper']");
 
 
 
-    public ShopMainPage(WebDriver driver) {
+    public ShopMainPage1(WebDriver driver) {
         super(driver);
     }
 
